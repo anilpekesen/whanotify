@@ -1,0 +1,38 @@
+# Shopify App Configuration — Whanotify
+# https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "whanotify"
+client_id = "d49a2d2c4e809e606dbae39770a3dcf3"
+application_url = "https://app.whanotify.com"
+embedded = true
+
+[access_scopes]
+scopes = "read_orders,read_customers,write_customers"
+
+[auth]
+redirect_urls = [
+  "https://app.whanotify.com/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-01"
+
+  [[webhooks.subscriptions]]
+  topics = ["app/uninstalled"]
+  uri = "/webhooks"
+
+  # GDPR — Zorunlu (App Store şartı)
+  [[webhooks.subscriptions]]
+  topics = ["customers/data_request"]
+  uri = "/webhooks"
+
+  [[webhooks.subscriptions]]
+  topics = ["customers/redact"]
+  uri = "/webhooks"
+
+  [[webhooks.subscriptions]]
+  topics = ["shop/redact"]
+  uri = "/webhooks"
+
+[pos]
+embedded = false
