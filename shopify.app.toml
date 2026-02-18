@@ -3,7 +3,7 @@
 
 name = "whanotify"
 client_id = "d49a2d2c4e809e606dbae39770a3dcf3"
-application_url = "https://app.whanotify.com"
+application_url = "https://whanotify.vercel.app"
 embedded = true
 
 [access_scopes]
@@ -11,7 +11,7 @@ scopes = "read_orders,read_customers,write_customers"
 
 [auth]
 redirect_urls = [
-  "https://app.whanotify.com/auth/callback"
+  "https://whanotify.vercel.app/auth/callback"
 ]
 
 [webhooks]
