@@ -3,7 +3,7 @@
 
 name = "whanotify"
 client_id = "d49a2d2c4e809e606dbae39770a3dcf3"
-application_url = "https://whanotify.vercel.app"
+application_url = "https://whanotify.fly.dev"
 embedded = true
 
 [access_scopes]
@@ -11,7 +11,7 @@ scopes = "read_orders,read_customers,write_customers"
 
 [auth]
 redirect_urls = [
-  "https://whanotify.vercel.app/auth/callback"
+  "https://whanotify.fly.dev/auth/callback"
 ]
 
 [webhooks]
@@ -19,19 +19,6 @@ api_version = "2024-01"
 
   [[webhooks.subscriptions]]
   topics = ["app/uninstalled"]
-  uri = "/webhooks"
-
-  # GDPR — Zorunlu (App Store şartı)
-  [[webhooks.subscriptions]]
-  topics = ["customers/data_request"]
-  uri = "/webhooks"
-
-  [[webhooks.subscriptions]]
-  topics = ["customers/redact"]
-  uri = "/webhooks"
-
-  [[webhooks.subscriptions]]
-  topics = ["shop/redact"]
   uri = "/webhooks"
 
 [pos]

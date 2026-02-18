@@ -1,0 +1,33 @@
+# Fly.io configuration for Whanotify
+app = "whanotify"
+primary_region = "ams"  # Amsterdam — Türkiye'ye en yakın
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  NODE_ENV = "production"
+  PORT = "3000"
+  SESSION_STORAGE_PATH = "/data/shopify_sessions.db"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+
+  [http_service.concurrency]
+    type = "requests"
+    hard_limit = 250
+    soft_limit = 200
+
+[[vm]]
+  memory = "512mb"
+  cpu_kind = "shared"
+  cpus = 1
+
+# SQLite için persistent volume
+[[mounts]]
+  source = "whanotify_data"
+  destination = "/data"
